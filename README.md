@@ -1,4 +1,4 @@
-# node-es-logger v0.1.0
+# node-es-logger v0.1.1
 
 This module creates a [bunyan](https://github.com/trentm/node-bunyan) logger instance with an output stream bound to [elasticsearch](https://github.com/elasticsearch/elasticsearch) instance with [logstash](https://github.com/elasticsearch/logstash) compatible JSON format.
 
