@@ -28,7 +28,7 @@ module.exports.create = function (opts) {
     }
 
 
-    esStream = new ElasticsearchStrean({
+    var esStream = new ElasticsearchStream({
 
         indexPattern: opts.indexPattern || '[logstash-]YYYY.MM.DD',
         type: opts.type || 'logs',
@@ -44,7 +44,7 @@ module.exports.create = function (opts) {
 
     if (!opts.quiet) {
 
-        stream.push({
+        streams.push({
 
             stream: process.stdout
 
