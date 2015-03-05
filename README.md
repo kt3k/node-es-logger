@@ -16,16 +16,23 @@ var logger = require('es-logger').create({
 logger.info({value: 123}, 'message');
 ```
 
-This prints a JSON to stdout and also send it to elasticsearch instance at `localhost:9200`.
+This prints a JSON and also send it to elasticsearch instance at `localhost:9200`.
 
 
-### Use with bonsai.io.
+### Use with [bonsai.io](https://bonsai.io/).
 
-```
+```js
 var logger = require('es-logger').create({
 
     name: 'myapp',
     host: 'username:password@myapp-name-123456789.us-west-2.bonsai.io'
 
 });
+
+logger.info({value: 123}, 'message');
 ```
+
+This prints a JSON and also send it to *bonsai*'s elasticsearch instance at `myapp-name-123456789.us-west-2.bonsai.io`.
+
+
+see [bunyan's README](https://github.com/trentm/node-bunyan#log-method-api) for what interfaces the `logger` has.
