@@ -1,7 +1,7 @@
 
 
 var bunyan = require('bunyan');
-var ElasticsearchStream = require('bunyan-elasticsearch');
+var ElasticsearchStream = require('bunyan-elasticsearch-updated');
 
 
 /**
