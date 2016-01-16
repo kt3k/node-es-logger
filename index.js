@@ -10,8 +10,11 @@ var ElasticsearchStream = require('bunyan-elasticsearch-updated');
  * @param {Object} opts
  * @param {String} opts.name The log name
  * @param {String} opts.host The hostname of elasticsearch cluster
+ * @param {String} opts.client Elasticsearch client. Overrides opts.host
  * @param {String} opts.indexPattern
- * @param {String} opts.type
+ * @param {(String|function)} opts.index Overrides opts.indexPattern
+ * @param {(String|function)} opts.type
+ * @param {Object[]} opts.serializers Bunyan serializers
  * @param {Boolean} opts.quiet
  */
 module.exports.create = function (opts) {
@@ -19,19 +22,16 @@ module.exports.create = function (opts) {
 
     opts = opts || {};
 
-    if (opts.host == null) {
-        throw new Error('es-logger: `host` parameter is required');
-    }
-
-    if (opts.name == null) {
+    if (!opts.name) {
         throw new Error('es-logger: `name` parameter is required');
     }
-
 
     var esStream = new ElasticsearchStream({
 
         indexPattern: opts.indexPattern || '[logstash-]YYYY.MM.DD',
         type: opts.type || 'logs',
+        client: opts.client,
+        index: opts.index,
         host: opts.host
 
     });
@@ -56,7 +56,7 @@ module.exports.create = function (opts) {
 
         name: opts.name,
         streams: streams,
-        serializers: bunyan.stdSerializers
+        serializers: opts.serializers || bunyan.stdSerializers
 
     });
 
