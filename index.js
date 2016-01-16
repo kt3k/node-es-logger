@@ -32,6 +32,8 @@ module.exports.create = function (opts) {
 
         indexPattern: opts.indexPattern || '[logstash-]YYYY.MM.DD',
         type: opts.type || 'logs',
+        client: opts.client,
+        index: opts.index,
         host: opts.host
 
     });
