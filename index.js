@@ -19,14 +19,9 @@ module.exports.create = function (opts) {
 
     opts = opts || {};
 
-    if (opts.host == null) {
-        throw new Error('es-logger: `host` parameter is required');
-    }
-
-    if (opts.name == null) {
+    if (!opts.name) {
         throw new Error('es-logger: `name` parameter is required');
     }
-
 
     var esStream = new ElasticsearchStream({
 
