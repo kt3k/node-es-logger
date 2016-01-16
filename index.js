@@ -10,8 +10,11 @@ var ElasticsearchStream = require('bunyan-elasticsearch-updated');
  * @param {Object} opts
  * @param {String} opts.name The log name
  * @param {String} opts.host The hostname of elasticsearch cluster
+ * @param {String} opts.client Elasticsearch client. Overrides opts.host
  * @param {String} opts.indexPattern
- * @param {String} opts.type
+ * @param {(String|function)} opts.index Overrides opts.indexPattern
+ * @param {(String|function)} opts.type
+ * @param {Object[]} opts.serializers Bunyan serializers
  * @param {Boolean} opts.quiet
  */
 module.exports.create = function (opts) {
