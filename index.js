@@ -58,7 +58,7 @@ module.exports.create = function (opts) {
 
         name: opts.name,
         streams: streams,
-        serializers: bunyan.stdSerializers
+        serializers: opts.serializers || bunyan.stdSerializers
 
     });
 
